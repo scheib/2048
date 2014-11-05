@@ -10,7 +10,6 @@ function HTMLActuator() {
 HTMLActuator.prototype.actuate = function (grid, metadata) {
   var self = this;
 
-console.log("HTMLActuator.prototype.actuate about to call requestAnimationFrame")
   window.requestAnimationFrame(function () {
     self.clearContainer(self.tileContainer);
 

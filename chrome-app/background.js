@@ -3,26 +3,21 @@ var syncStorage = {
   serializedData: "",
 
   setItem: function (id, val) {
-    console.log("setItem " + id + val);
     return this.data[id] = String(val);
   },
 
   getItem: function (id) {
-    console.log("getItem " + id);
     return this.data.hasOwnProperty(id) ? this.data[id] : undefined;
   },
 
   removeItem: function (id) {
-    console.log("removeItem " + id);
     return delete this.data[id];
   },
 
   saveData: function () {
-    console.log("saveData");
     var savingData = {};
     savingData["data"] = JSON.stringify(this.data);
     if (savingData.data != this.serializedData) {
-      console.log("saveData new data", savingData);
       this.serializedData = savingData.data;
       chrome.storage.sync.set(savingData);
     }
@@ -31,10 +26,8 @@ var syncStorage = {
   loadData: function () {
     var that = this;
     chrome.storage.sync.get("data", function(loadedData) {
-      console.log("loadData got", loadedData);
       if (loadedData.data &&
           loadedData.data != that.serializedData) {
-        console.log("loadData got new data");
         that.serializedData = loadedData.data;
         that.data = JSON.parse(loadedData.data);
         game.setup();
@@ -43,10 +36,8 @@ var syncStorage = {
   },
 
   listenForDataChanges: function () {
-    console.log("listenForDataChanges");
     var that = this;
     chrome.storage.onChanged.addListener(function (changes, areaName) {
-      console.log("onChanged", changes, areaName);
       that.loadData();
     });
   }
@@ -85,7 +76,6 @@ chrome.app.runtime.onLaunched.addListener(function() {
       }, 7000);
 
     newWindow.onClosed.addListener(function () {
-      console.log("newWindow.contentWindow.onClosed");
       syncStorage.saveData();
       clearInterval(saveDataInterval);
     });
