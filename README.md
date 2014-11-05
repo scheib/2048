@@ -1,3 +1,13 @@
+# 2048 Chrome App
+
+[2048 Chrome App in the Chrome Web Store](https://chrome.google.com/webstore/detail/2048/jcjbnkncddbeomhaacaeokhfnefibpde).
+
+A [Chrome App](https://developer.chrome.com/apps) packaging of https://github.com/gabrielecirulli/2048 that synchronizes game state across computers using chrome.storage.sync and offline support.
+
+View differences with https://github.com/scheib/2048/compare/gabrielecirulli:master...master
+
+gabrielecirulli stock README below:
+
 # 2048
 A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
 
